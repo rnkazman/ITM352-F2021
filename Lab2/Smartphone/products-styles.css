@@ -1,0 +1,31 @@
+body {
+    width: 800px; 
+    margin: 0 auto; 
+}
+
+img { 
+    width: 200 px;
+    height: 200 px; 
+    border: 1px solid #ddd 
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+main { 
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background-image: url("Images/phone_globe.jpg");
+}
+
+div {
+    border: 5px solid black;
+    display: flex;
+}
