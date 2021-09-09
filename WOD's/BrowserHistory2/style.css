@@ -1,27 +1,3 @@
 body {
-    width: 800px; 
-    margin: 0 auto;
-    text-decoration-style: darkblue;
-
-h1 {
-    text-align: center;
+    color: blue
 }
-
-h2 {
-    text-align: center;
-    text-decoration-color: darkblue;
-    -moz-text-decoration-color: darkblue;
-}
-
-main { 
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    background-image: url("Images/phone_globe.jpg");
-}
-
-div {
-    border: 5px solid black;
-    display: flex;
-}
-
