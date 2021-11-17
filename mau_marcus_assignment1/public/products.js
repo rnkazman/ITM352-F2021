@@ -28,6 +28,13 @@ products = [
     "description": "This is something good",
     "image" : "./images/Valley2.jpg",
 },
+
+{
+    "name": "Something",
+    "price": 1.99,
+    "description": "This is something good",
+    "image" : "./images/Valley2.jpg",
+},
 ]
 
 if (typeof module != 'undefined') {
