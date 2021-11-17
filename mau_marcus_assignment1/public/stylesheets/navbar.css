@@ -1,5 +1,5 @@
 ul {
-    list-style-type: horizontal;
+    list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -22,8 +22,8 @@ ul {
     text-decoration: none;
     }
     li a:hover:not(.active) {
-    background-color: grey;
+    background-color: rgb(53, 114, 206);
     }
     .active {
-        background-color: powderblue;
+        background-color: rgb(83, 138, 21);
     }

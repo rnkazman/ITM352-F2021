@@ -17,7 +17,7 @@ app.all('*', function (request, response, next) { //for all request methods...
 
 app.use(myParser.urlencoded({ extended: true })); //get data in the body
 
-app.post("/process_purchase", function (request, response) {
+app.post("./completed_purchase.html", function (request, response) {
     let POST = request.body; // data would be packaged in the body
 
     //check if quantities are nonnegative integers 
@@ -28,7 +28,7 @@ app.post("/process_purchase", function (request, response) {
             
                         qty=POST[`quantity${i}`];
                         hasquantities=hasquantities || qty>0; // If it has a value bigger than 0 then it is good
-                        hasvalidquantities=hasvalidquantities && isNonNegInt(qty);    // if it is both a quantity over 0 and is valid    
+                        hasvalidquantities=hasvalidquantities && isNonNegativeInteger(qty);    // if it is both a quantity over 0 and is valid    
         } 
         // if all quantities are valid, generate the invoice// 
         const stringified = queryString.stringify(POST);
@@ -45,7 +45,7 @@ app.post("/process_purchase", function (request, response) {
 });
 
 //repeats the isNonNegInt function from the products_display.html file 
-function isNonNegInt(q, returnErrors = false) {
+function isNonNegativeInteger(q, returnErrors = false) {
     errors = []; // assume that quantity data is valid 
     if (q == "") { q = 0; }
     if (Number(q) != q) errors.push('Not a number!'); //check if the string is a number
