@@ -17,7 +17,7 @@ app.all('*', function (request, response, next) { //for all request methods...
 
 app.use(myParser.urlencoded({ extended: true })); //get data in the body
 
-app.post("./completed_purchase.html", function (request, response) {
+app.post("/completed_purchase.html", function (request, response) {
     let POST = request.body; // data would be packaged in the body
 
     //check if quantities are nonnegative integers 
@@ -33,13 +33,13 @@ app.post("./completed_purchase.html", function (request, response) {
         // if all quantities are valid, generate the invoice// 
         const stringified = queryString.stringify(POST);
         if (hasvalidquantities && hasquantities) {
-            // removed question mark at end of .html
-            response.redirect("/invoice.html"+stringified); // using the invoice.html and all the data that is input
+      
+            response.redirect("./invoice.html?"+stringified); // using the invoice.html and all the data that is input
         }  
 
-        // removed question mark at end of .html
+       
         else { 
-            response.redirect("/products_display.html" + stringified) 
+            response.redirect("./products_display.html?" + stringified) 
         }
     }
 });
