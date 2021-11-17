@@ -1,6 +1,4 @@
-
-<script>
-    // Display
+<script
     src = "./products.js" ; type = "text/javascript">
 </script>
 
@@ -43,7 +41,7 @@ window.onload = function () {
                 }
             }
         }
-    }
+    
 
     if (has_errors) {
                 alert("Please enter only valid quantities!");}
@@ -53,6 +51,7 @@ window.onload = function () {
                 window.location = `./invoice.html${document.location.search}`;
                 window.stop;
             }
+}
         
 </script>    
 
@@ -62,7 +61,7 @@ window.onload = function () {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcus' Store</title>
+    <title>Marcus' Online Store</title>
     <link rel="stylesheet" href="./stylesheets/navbar.css">
     <link rel="stylesheet" href="./stylesheets/products-style.css">
     <link rel="stylesheet"
@@ -76,12 +75,14 @@ window.onload = function () {
     </style>
 </head>
 <body>
-    <ul>
-        <li style="float:left"><a href="./index.html">Marcus' Shop</a></li>
-        <li><a href="./invoice.html">Shopping Cart</a></li>
-        <li><a class="active" href="./products_display.html">Products</a></li>
-      </ul>
-      <form name="product_main_display" action="/process_purchase" method="POST">
+    <div id="navbar">
+        <ul>
+        <li><a href="./index.html"</a>Marcus' Online Store</a></li>
+        <li><a href="./invoice.html"</a>Shopping Cart</a></li>
+        <li><a href="./products_display.html"</a>Products</a></li>
+        </ul>
+        </div> 
+      <form name="product_main_display" action="./completed_purchase.html" method="POST">
     <div>
         <main>
             <script>
@@ -89,9 +90,9 @@ window.onload = function () {
                         document.write(`
                                 <section class="item">
                                     <h2>${products[i].name}</h2>
-                                    <br><img src="${products[i].image}">
+                                    <br><img src="${products[i].image}" width= "50%" height="50%">
                                     <p>$${products[i].price}</p>
-                                    <label id="quantity${i}_label"}">Quantity</label>
+                                    <label id="quantity${i}_label"}>Quantity</label>
                                     <input type="text" placeholder="0" name="quantity${i}" 
                                     onkeyup="checkQuantityTextbox(this);">
                 
