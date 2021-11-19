@@ -5,13 +5,31 @@
 
 <script>
 // Check that input value is a non-negative integer
-function IsNonNegativeInteger (InputValue, ReturnErrors = false) {
+
+function isNonNegInt(inputstring, returnErrors = false) {
+    errors = []; // assume no errors at first
+    if(Number(inputstring) != inputstring) {
+        errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
+    }
+    else 
+    {
+        if (inputstring == 0) errors.push('<font color="red">Enter a Number!</font>')
+        if(inputstring < 0) errors.push('<font color="red">Negative value!</font>'); // Check if it is non-negative
+        if(parseInt(inputstring) != inputstring) errors.push('<font color="red">Not an integer!</font>'); // Check that it is an integer
+        if(inputstring > 9) errors.push('<font color="red">Will make more soon, we are sold out!</font>'); //to deny customers from ordering more than whats avaliable
+    
+        }
+    }
+
+// taken out //
+/* function IsNonNegativeInteger (InputValue, returnerrors = false) {
     // Assume there are no errors at first in the function 
     errors = []; 
     // If function to check number is a integer
-    if (Number(InputValue) != InputValue)
-        errors.push('Not a number!');
+    if (Number(InputValue) != InputValue) {
+        errors.push('This is not a number!!');
     // Check to make sure string is non-negative integer
+    }
     else if (q < 0) errors.push('Negative Value!');
     else if (parseInt(q) != q) errors.push('Not an acceptable value!');
     return return_errors ? errors : (errors.length == 0);
@@ -23,6 +41,7 @@ function checkQuantityTextbox(Textbox) {
         if (theTextbox.value.trim() == '') errs = ['Quantity'];
         document.getElementById(theTextbox.name + '_label').innerHTML = errors.join(", ");
 }
+*/
 
 window.onload = function () {
         let params = (new URL(document.location)).searchParams; 
