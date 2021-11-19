@@ -100,17 +100,8 @@
             </script>
 
             <script>
-                  let params = (new URL(document.location)).searchParams; //Puts the url into the params variable. Used (later) to get information from the query string.
 
-if (params.get("error") == "true") { //If there is an "error=true" in the url query, then give an alert saying that they need to put a postive whole number.
-    alert("Oops! Invalid input for " + params.get("item").replace(/_/g, " ") + ". Please insert a postive whole number."); //Code adapted from here: https://www.tutorialrepublic.com/faq/how-to-replace-character-inside-a-string-in-javascript.php
-};
-if (params.get("error") == "true_not_enough_in_inventory") { //If there is an "error=true_not_enough_in_inventory" in the url query, then give an alert saying they input a value more than what we have currently stocked.
-    alert("Oh no! Not enough "+ params.get("item").replace(/_/g, " ") + " in stock. Sorry for the inconvenience.");
-};
-if (params.get("error") == "true_no_items_were_selected") {//If there is an "error=true_no_items_were_selected" in the url query, then give an alert that says they didn't select any items.
-    alert("Silly Goose! Please select some items :)");
-};
+
             </script>
         </main>
     </div>
