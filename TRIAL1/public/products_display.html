@@ -8,7 +8,7 @@
 <script>
 // Check that input value is a non-negative integer
 
-function isNonNegInt(inputstring, returnErrors = false) {
+function isNonNegativeInteger(inputstring, returnErrors = false) {
     errors = []; // assume no errors at first
     if(Number(inputstring) != inputstring) {
         errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
