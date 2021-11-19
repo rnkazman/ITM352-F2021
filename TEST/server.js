@@ -71,39 +71,7 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
 }
 */
 
-app.post('/purchase', function (request, response, next) { //Adapted from lab 13 Exercise 5
-    let quantity_string = "invoice.html?"; //Created so we can then add on the individual "quantity${}" from the textboxes with the for loop
-    let redirected = false; //Used to check if the user has already been redirected by one of the prior if statements so the server doesn't try the next if statements (essentially prevents an error in temrinal).
 
-    //VALIDATING QUANTITY: First checking if all values are valid.
-    quantities_array = []; //Creating an empty array for all desired quantities.
-    var sum_of_quantities_array = 0; //Setting sum of quantities to 0 by default
-    var should_sell = true; //Setting should sell to true by default.
-
-    for (i in products_array) {
-        var quantity_desired_by_user = request.body[`quantity${i}`]; //Gets textbox value and places it variable 'quantity_desired_by_user'
-
-        if (quantity_desired_by_user == "") { //When a textbox is left blank... 
-            quantity_desired_by_user = "0"; //The quantity for said product will be submitted as a 0 to the invoice.
-        };
-
-        if (!isNonNegInt(Number(quantity_desired_by_user))) { //If the quantity is not a valid number...
-            should_sell = false; //Tell server that we should not sell
-            redirected = true; //We are telling the server that we are going to be redirected, do not try to set the next header.
-            response.redirect("products_display.html?error=true&item=" + products_array[i].name.replace(/ /g, "_")); //Redirect to products_page but now have an alert that says to enter a valid number for the specific product. Replace() is used to get rid of the spaces in the name since they are not allowed in urls.
-        };
-
-        if (Number(quantity_desired_by_user) > products_array[i].quantity_available) { //If the quantity is greater than the amount we have available...
-            should_sell = false; //Tell the server that we should not sell
-            redirected = true; //We are telling the server that we are going to be redirected, do not try to set the next header. 
-            response.redirect("products_display.html?error=true_not_enough_in_inventory&item=" + products_array[i].name.replace(/ /g, "_")); //Redirect to products_page but now have an alert that says to we don't have enough in stock to fulfill their desired quantity for the specific product. Replace() is used to get rid of the spaces in the name since they are not allowed in urls.
-
-        };
-    
-        quantities_array.push(Number(quantity_desired_by_user)); //At the end of each cycle in the loop, push the value into the quantities_array.
-
-    };
-})
 // taken from assignment 1 examples
 app.use(express.static('./public')); // root in the 'public' directory so that express will serve up files from here
 app.listen(8080, () => console.log(`listening on port 8080`)); //run the server on port 8080 and show it in the console
