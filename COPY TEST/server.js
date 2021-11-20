@@ -28,26 +28,26 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
     //taken from Alyssa Mencel
     //check if quantities are nonnegative integers 
     if (typeof POST['submitPurchase'] != 'undefined') {
-        var hasvalidquantities=true; // creating a varibale assuming that it'll be true
-        var hasquantities=false
+        var valid=true; // creating a varibale assuming that it'll be true
+        var notvalid=false
         for (i = 0; i < products.length; i++) {
             
                         qty=POST[`quantity${i}`];
-                        hasquantities=hasquantities || qty>0; // If it has a value bigger than 0 then it is good
-                        hasvalidquantities=hasvalidquantities && isNonNegativeInteger(qty);    // if it is both a quantity over 0 and is valid    
+                        notvalid=notvalid || qty>0; // If it has a value bigger than 0 then it is good
+                        valid=valid && isNonNegativeInteger(qty);    // if it is both a quantity over 0 and is valid    
         } 
 
         //copied from Alyssa Mencel
         for (i = 0; i < products.length; i++) {
             let quantityremaining = products_array[i].quantity_available - products_array[i].total_sold;
             qty=POST[`quantity${i}`];
-            hasquantities=hasquantities || qty>0; // If it has a value bigger than 0 then it is good
-            hasvalidquantities=hasvalidquantities && isNonNegativeInteger(qty);    // if it is both a quantity over 0 and is valid    
+            notvalid=notvalid || qty>0; // If it has a value bigger than 0 then it is good
+            valid=valid && isNonNegativeInteger(qty);    // if it is both a quantity over 0 and is valid    
 } 
         //copied from Alyssa Mencel
         // if all quantities are valid, generate the invoice// 
         const stringified = queryString.stringify(POST);
-        if (hasvalidquantities && hasquantities) {
+        if (valid && notvalid) {
       
             response.redirect("./invoice.html?"+stringified); // using the invoice.html and all the data that is input
         }  
