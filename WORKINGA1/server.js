@@ -54,7 +54,7 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
 
        
         else { 
-            response.redirect("./products_display.html?" + stringified + "sorry we don't have any left") 
+            response.redirect("./products_display.html?" + stringified) 
         }
     }
 });
