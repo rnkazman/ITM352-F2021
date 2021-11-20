@@ -3,35 +3,22 @@
     src = "./products.js" ; type = "text/javascript">
 </script>
 
-
-
-
-
 <script>
-    // code from Nicole Tommee
-  let params = (new URL(document.location)).searchParams;
-  window.onload = () => {
-    if ((params.has('error'))) {
-      for (i in products) {
-        // put quantity values from qstring into quantity textboxes
-        product_selection_form[`quantity${i}`].value = params.get(`quantity${i}`);
-      }
-      alert("You entered an invalid quantity.")
-    }
-  }
 // code from Nicole Tommee
-  function isNonNegInt(q, returnErrors = false) {
+  function isNonNegInt(q,  returnErrors = false) {
     errors = []; // assume no errors at first
     if (q == '') q = 0;
-    if (Number(q) != q) errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
+    if (Number(q) != q) errors.push('<font color="red">no stupid!</font>'); // Check if string is a number value
     else {
-      if (q < 0) errors.push('<font color="red">Negative value!</font>'); // Check if it is non-negative
+      if (q <= 0) errors.push('<font color="red">Please enter a positive value!</font>'); // Check if it is non-negative
       if (parseInt(q) != q) errors.push('<font color="red">Not an integer!</font>'); // Check that it is an integer
     }
     return returnErrors ? errors : (errors.length == 0);
   }
+
+  
   // code from Nicole Tommee
-  // modified code from Lab12 
+  // modified code from Lab12 n
   function checkQuantityTextbox(theTextbox) {
     // is the textbox value a non-negative int?
     var errors_array = isNonNegInt(theTextbox.value, true);
@@ -97,6 +84,7 @@
             </script>
         </main>
     </div>
+    <!--creation of Purchase button that sends user to invoice page-->
     <footer>
         <input type="submit" value="Purchase!" name="submitPurchase"
     </footer>

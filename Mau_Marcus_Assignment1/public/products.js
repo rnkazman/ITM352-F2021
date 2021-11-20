@@ -1,4 +1,4 @@
-// Marcus' Product Array for Assignment 1
+// Marcus' Product Array for Assignment 1//
 products = [
 {
     "name": "Asia CD",
@@ -8,7 +8,7 @@ products = [
 },
 
 {
-    "name": "Celio and Kapono",
+    "name": "Celio and Kapono CD",
     "price": 1.99,
     "image" : "./images/CandK.jpg",
     "quantity_available" : 20,
