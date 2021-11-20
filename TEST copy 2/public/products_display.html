@@ -1,0 +1,110 @@
+<script
+
+    src = "./products.js" ; type = "text/javascript">
+</script>
+
+<script>
+    // code from Nicole Tommee
+  
+  
+ let params = (new URL(document.location)).searchParams;
+  window.onload = () => {
+    if ((params.has('error'))) {
+      for (i in products) {
+        // put quantity values from qstring into quantity textboxes
+        product_selection_form[`quantity${i}`].value = params.get(`quantity${i}`);
+      }
+      alert("You entered an invalid quantity.")
+    }
+  }
+// code from Nicole Tommee
+  function isNonNegInt(q, returnErrors = false) {
+    errors = []; // assume no errors at first
+    if (q == '') q = 0;
+    if (Number(q) != q) errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
+    else {
+      if (q <= 0) errors.push('<font color="red">Please enter a value greater than Zero!</font>'); // Check if it is non-negative
+      if (parseInt(q) != q) errors.push('<font color="red">Not an integer!</font>'); // Check that it is an integer
+    }
+    return returnErrors ? errors : (errors.length == 0);
+  }
+  // code from Nicole Tommee
+  // modified code from Lab12 
+  function checkQuantityTextbox(theTextbox) {
+    // is the textbox value a non-negative int?
+    var errors_array = isNonNegInt(theTextbox.value, true);
+    // once the user types something in the box and it has no errors, change the message to quantity requested
+    if (errors_array.length == 0) errors_array = ['Quantity Requested:'];
+    // if nothing in box tell user to enter a quantity
+    if (theTextbox.value.trim() == '') errors_array = ['Enter a quantity'];
+    // if there are errors, display all the errors 
+    document.getElementById(theTextbox.name + '_label').innerHTML = errors_array.join(", ");
+  }
+
+  </script>
+
+
+<!--Creating homepage of website-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--from WODs linking sheet to basic stylesheet from CSS-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just a small CD Store</title>
+    <link rel="stylesheet" href="./stylesheets/navbar.css">
+    <link rel="stylesheet" href="./stylesheets/products-style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Oswald">
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Oswald', 'Sans';
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+  <!--from WODs creating navbar-->
+    <div id="navbar">
+        <ul>
+        <li><a href="./index.html"</a>Home Page</a></li>
+        <li><a class="active" href="./products_display.html"</a>CDs Galore</a></li>
+        </ul>
+        </div> 
+        <form name="invoice" action="./invoice.html" method="POST">  
+     <!--<form name="completed_purchase" action="./completed_purchase.html" method="POST"> -->
+    <div>
+        <main>
+            <script>
+
+            //from Professor Daniel Port
+            // this for loop displays the products array (from product.js)
+                for (i=0; i < products.length; i++) {
+            document.write(`<section class="item">
+                <h2>${products[i].name}</h2>
+                <h3>${products[i].quantity_available} in stock now.</h3>
+                <p>$${products[i].price}</p>
+                <label id="quantity${i}_label"}">Quantity</label>
+                    <input type="text" placeholder="0" name="quantity${i}" onkeyup="checkQuantityTextbox(this);"> 
+                <img src=${products[i].image} class="center">
+    
+            </section>`);
+        }
+        
+            </script>
+
+            <script>
+
+
+            </script>
+        </main>
+    </div>
+    <footer>
+        <input type="submit" value="Purchase!" name="submitPurchase"
+    </footer>
+</form>
+
+</body>
+</html>
