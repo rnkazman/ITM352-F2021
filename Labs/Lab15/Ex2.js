@@ -12,8 +12,11 @@ var myParser = require("body-parser");
 var filename = "./user_data.json";
 var queryString = require("query-string");
 var cookieParser = require('cookie-parser');
-app.use(cookieParser());
+var session = require('express-session');
 
+//app.use(cookieParser());
+
+app.use(session({secret: "MySecretKey", resave: true, saveUnitialized: true}));
 app.use(cookieParser());
 app.use(myParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
@@ -47,9 +50,24 @@ app.get("/get_cookie", function (request, response) {
 }
 );
 
+app.get("/use_session", function (request, response) {
+    //console.log("Cookies=" + request.cookies);
+    //when you used the console.log for this what should have happened?
+    
+    response.send("Your session ID is" + request.session.id);
+}
+);
+
 app.get("/login", function (request, response) {
     // Give a simple login form
+    if(typeof request.session['last_login'] != "undefined") {
+        login_time = "Last login was " + request.session["last_login"];
+    } else { 
+        login_time = "First login"; 
+    }
+    my_cookie_name = request.cookies["username"];
     str = `<body>
+    Login info: ${login_time} by ${my_cookie_name}
 <form action="/login" method="POST">
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
@@ -71,7 +89,10 @@ app.post("/login", function (request, response) {
     if (user_data[user_name] != undefined) {
         if (user_data[user_name].password == user_pass) {
             // Good login
-            response.redirect("products_page.html");
+            request.session['last_login'] = Date(); 
+            response.cookie("username", user_name, {"maxAge": 10*1000});
+            request.session['username'] = user_name;
+            response.send("Welcome " + user_name);
         } else {
             // Bad login, redirect
             response.send("Sorry bud");
