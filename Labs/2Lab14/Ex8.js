@@ -33,6 +33,7 @@ app.get("/login", function (request, response) {
 <input type="text" name="username" size="40" placeholder="enter username" ><br />
 <input type="password" name="password" size="40" placeholder="enter password"><br />
 <input type="submit" value="Submit" id="submit">
+<a href="register"</a>Register New User</a>
 </form>
 </body>
     `;
@@ -100,7 +101,8 @@ app.get("/register", function (request, response) {
    data = JSON.stringify(user_data);
    fs.writeFileSync(filename, data, "utf-8");
 
-   response.send("User " + user_name + "added");
+   response.send("User " + user_name + " added");
+   response.send()
 
  });
 
