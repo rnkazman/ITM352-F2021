@@ -3,7 +3,7 @@ Copied from Assignment 1 example video and info_server_Ex4.js from Lab13
 Mau Assignment 1 Server
 */
 
-var data = require('./public/products.js.js.js.js.js.js'); //load products.js file and set to variable 'data'
+var data = require('./public/products.js.js.js.js.js.js.js'); //load products.js file and set to variable 'data'
 //Check below code (line 8)
 var products_array = data.products; //set variable 'products_array' to the products array in the products.js file
 const queryString = require('querystring'); //read variable 'queryString' as the loaded query-string module
