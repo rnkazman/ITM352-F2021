@@ -22,5 +22,15 @@
         "name": "Jsmith",
         "password": "Jsmith",
         "email": "johnsmith@gmail.com"
+    },
+    "A": {
+        "name": "A",
+        "password": "B",
+        "email": "ab@gmail.com"
+    },
+    "b": {
+        "name": "b",
+        "password": "b",
+        "email": "b@gmail.com"
     }
 }
