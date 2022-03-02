@@ -16,3 +16,8 @@ for (var count = 1; eval("typeof name"+count) != 'undefined'; count++) {
     console.log(`${count}. ${eval('name' + count)}`);
 }
 // USE ARRAYS TO AVOID HAVING TO START AT COUNT 1 -48.47 Lab 8 video
+
+// how to use an arrya
+var product1 = {
+    "attribute": "name",
+}
