@@ -21,3 +21,20 @@ for (var count = 1; eval("typeof name"+count) != 'undefined'; count++) {
 var product1 = {
     "attribute": "name",
 }
+
+// 3 different ways to print an array
+
+for (i=0; i<4; i++) {
+    document.write("<BR>" + fruits[i]);
+} // REQUIRES HARDCODING SO IT'S NOT AS FLEXIBLE
+
+for (i in fruits) {
+    document.write("<BR>" + fruits[i]);
+}
+
+for (i=0; i<fruits.length; i++) {
+    document.write("<BR>" + fruits[i])
+}
+
+// add new element to an array (I don't think I'll use this for the assignments)
+fruits [4] = "raspberries";
