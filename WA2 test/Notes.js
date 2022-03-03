@@ -38,3 +38,13 @@ for (i=0; i<fruits.length; i++) {
 
 // add new element to an array (I don't think I'll use this for the assignments)
 fruits [4] = "raspberries";
+
+deposit = function(amount) {
+    console.log(balance);
+    balance += amount; 
+    console.log("New balance is " + balance);
+}
+
+var balance = 600
+var deposit = 50; 
+console.log("Balance is " + balance);
