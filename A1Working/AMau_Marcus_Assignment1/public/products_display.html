@@ -1,21 +1,19 @@
 <script
-
     src = "./products.js" ; type = "text/javascript">
 </script>
 
 <script>
-// code from Nicole Tommee
+// code from Nicole Tommee 
   function isNonNegInt(q,  returnErrors = false) {
     errors = []; // assume no errors at first
     if (q == '') q = 0;
-    if (Number(q) != q) errors.push('<font color="red">no stupid!</font>'); // Check if string is a number value
+    if (Number(q) != q) errors.push('<font color="red">Please enter a number</font>'); // Check if string is a number value
     else {
       if (q <= 0) errors.push('<font color="red">Please enter a positive value!</font>'); // Check if it is non-negative
-      if (parseInt(q) != q) errors.push('<font color="red">Not an integer!</font>'); // Check that it is an integer
+      if (parseInt(q) != q) errors.push('<font color="red">Please enter a whole number!</font>'); // Check that it is an integer
     }
     return returnErrors ? errors : (errors.length == 0);
   }
-
   
   // code from Nicole Tommee
   // modified code from Lab12 n
@@ -28,9 +26,8 @@
     if (theTextbox.value.trim() == '') errors_array = ['Enter a quantity'];
     // if there are errors, display all the errors 
     document.getElementById(theTextbox.name + '_label').innerHTML = errors_array.join(", ");
-  }
+  } 
   </script>
-
 
 <!--Creating homepage of website-->
 <!DOCTYPE html>

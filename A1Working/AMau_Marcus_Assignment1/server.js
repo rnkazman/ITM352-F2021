@@ -12,6 +12,7 @@ var app = express(); //set module to variable 'app'
 
 // remove later// 
 var myParser = require("body-parser"); //load and cache body parser module
+const { getUnpackedSettings } = require('http2');
 
 app.all('*', function (request, response, next) { //for all request methods...
     console.log(request.method + ' to ' + request.path); //write in the console the request method and its path
@@ -44,11 +45,9 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
         //redirect if the no correct value to the products_display page
         const stringified = queryString.stringify(POST);
         if (hasvalidquantities && hasquantities) {
-      
             response.redirect("./invoice.html?" + stringified); // using the invoice.html and all the data that is input
         }  
 
-       
         else { 
             response.redirect("./products_display.html?" + stringified) 
         }
@@ -58,16 +57,6 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
 
 //repeats the isNonNegInt function from the products_display.html file 
 
-
-//ATTEMPT at having the server detect properties of values
-function isNonNegativeInteger(q, returnErrors = false) {
-    errors = []; // assume that quantity data is valid 
-    if (q == "") { q = 0; }
-    if (Number(q) != q) errors.push('Not a number!'); //check if the string is a number
-    if (q < 0) errors.push('Negative value!'); //check if value is a positive
-    if (parseInt(q) != q) errors.push('Not an integer!'); //check if value is an integer
-    return returnErrors ? errors : (errors.length == 0);
-}
 
 
 // taken from assignment 1 examples
