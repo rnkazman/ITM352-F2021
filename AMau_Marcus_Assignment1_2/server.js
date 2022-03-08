@@ -55,6 +55,8 @@ console.log(quantityremaining)
     }
 });
 
+
+
 //repeats the isNonNegInt function from the products_display.html file 
 function isNonNegInt(q, returnErrors = false) {
     errors = []; // assume that quantity data is valid 
