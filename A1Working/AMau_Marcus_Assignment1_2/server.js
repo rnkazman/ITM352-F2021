@@ -31,8 +31,9 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
     if (typeof POST['submitPurchase'] != 'undefined') { 
         var hasvalidquantities=true; // this is to make sure quantity is valid
         var hasquantities=false; 
+        var total_sold = 1
         for (i = 0; i < products.length; i++) { //for loop to go through the products and check which one was bought
-            var quantityremaining = products_array[i].quantity_available - products_array[i].quantity_available; // Deduct quantity from inventory
+            var quantityremaining = products_array[i].quantity_available - products_array[i].total_sold; // Deduct quantity from inventory
                 qty=POST[`quantity${i}`];
                 hasquantities=hasquantities || qty>0; // If it has a value bigger than 0 then it is good
                 hasvalidquantities=hasvalidquantities && isNonNegInt(qty);    // if it is both a quantity over 0 and is valid    

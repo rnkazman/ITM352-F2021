@@ -1,0 +1,2 @@
+is there a way I can take the values from the textbox using checkQuantitytextbox? I know I can then take that value and assign it to total_sold which will then make my site work. 
+I tried to do "var quantityremaining = products_array[i].quantity_available - products_array[i].quantity_available;" which worked
