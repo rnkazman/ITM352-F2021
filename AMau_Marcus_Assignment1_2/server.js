@@ -2,7 +2,6 @@
 Copied from Assignment 1 example video and info_server_Ex4.js from Lab13
 Mau Assignment 1 Server
 */
-
 var data = require('./public/products.js'); //load products.js file and set to variable 'data'
 //Check below code (line 8)
 var products_array = data.products; //set variable 'products_array' to the products array in the products.js file
@@ -38,7 +37,6 @@ app.use(express.urlencoded({ extended: true })); //get data in the body
                 hasquantities=hasquantities || qty>0; // If it has a value bigger than 0 then it is good
                 hasvalidquantities=hasvalidquantities && isNonNegInt(qty);    // if it is both a quantity over 0 and is valid    
 } 
-console.log(quantityremaining)
 
         //copied from Alyssa Mencel
         // if all quantities are valid, generate the invoice
@@ -55,7 +53,38 @@ console.log(quantityremaining)
     }
 });
 
+app.post("/products_display.html", function (request, response) { //lab 13 code
+    let POST = request.body;
+    
+    if (typeof POST['quantity_textbox'] != 'undefined')
+    {
+         let quantity = POST['quantity_textbox'];
+         if (isNonNegInt(quantity)) {
+             //response.send(`<H1>Thank you for ordering ${quantity} things!</H1>`);
+             console.log("success")
+         } else {
+             //response.send(`<I>${quantity} is not a valid quantity!</I>`);
+            console.log("failure")
+         }
+    }
+ });
 
+function isNonNegInt(q, return_errors = false) { //this function checks if values are postitive, integer, whole values 
+    errors = []; // assume no errors at first
+    if (q == '') q = 0; //sets blank inputs to the quantitiy of 0 
+    if (Number(q) != q) errors.push('<font color="red">Not a number!</font>'); // Check if string is a number value
+    else if (q <= 0) errors.push('<font color="red">Please enter a positive value</font>'); // Check if the string is non-negative
+    else if (parseInt(q) != q) errors.push('<font color="red">Not a full value!</font>'); // Check that it is an integer
+    return return_errors ? errors : (errors.length == 0);
+}
+function checkQuantityTextbox(theTextbox) {
+    errs = isNonNegInt(theTextbox.value, true);
+    if (errs.length == 0) errs = ['You want:']; //changes it to say you want ___
+    if (theTextbox.value.trim() == '') errs = ['Quantity'];
+    document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
+}
+
+ 
 
 //repeats the isNonNegInt function from the products_display.html file 
 function isNonNegInt(q, returnErrors = false) {
