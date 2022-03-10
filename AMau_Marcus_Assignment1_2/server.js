@@ -98,6 +98,6 @@ function isNonNegInt(q, returnErrors = false) {
 
 // taken from assignment 1 examples
 app.use(express.static('./public')); // root in the 'public' directory so that express will serve up files from here
-app.listen(8080, () => console.log(`listening on port 8080`)); //run the server on port 8080 and show it in the console
+app.listen(8081, () => console.log(`listening on port 8081`)); //run the server on port 8080 and show it in the console
 
            
